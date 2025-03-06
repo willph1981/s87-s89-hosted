@@ -8,7 +8,11 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "https://s87-s89-hosted.vercel.app", // Allow frontend domain
+    methods: "GET,POST,PATCH,DELETE",
+    credentials: true // Allow cookies/auth headers if needed
+}));
 
 const PORT = process.env.PORT || 4000;
 const MONGO_URI = process.env.MONGO_URI;
